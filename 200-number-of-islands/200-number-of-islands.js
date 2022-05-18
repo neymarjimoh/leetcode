@@ -16,16 +16,18 @@ var numIslands = function(grid) {
     }
     return output;
     
-    function dfs(grid, rowNum, colNum) {
+    function dfs(grid, rowNum, colNum, memo = {}) {
         // make sure it is not out of scope of the grid (graph)
-        if (rowNum < 0 || rowNum >= grid.length || colNum < 0 || colNum >= grid[0].length || grid[rowNum][colNum] == "0") {
+        if (rowNum < 0 || rowNum >= grid.length || colNum < 0 || colNum >= grid[0].length || grid[rowNum][colNum] == "0"
+           || `r${rowNum}c${colNum}` in memo)         {
             return;
         }
+        memo[`r${rowNum}c${colNum}`] = true;
         grid[rowNum][colNum] = "0";
         // check for both vertical and horizontal
-        dfs(grid, rowNum, colNum + 1);
-        dfs(grid, rowNum , colNum - 1);
-        dfs(grid, rowNum + 1, colNum);
-        dfs(grid, rowNum - 1, colNum);
+        dfs(grid, rowNum, colNum + 1, memo);
+        dfs(grid, rowNum , colNum - 1, memo);
+        dfs(grid, rowNum + 1, colNum, memo);
+        dfs(grid, rowNum - 1, colNum, memo);
     }
 };
