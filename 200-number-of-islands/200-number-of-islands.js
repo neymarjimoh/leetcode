@@ -8,6 +8,7 @@ var numIslands = function(grid, memo = {}) {
     let output = 0;
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
+            if (`r${i}c${j}` in memo) continue;
             if (grid[i][j] === "1") {
                 dfs(grid, i, j, memo);
                 output += 1;
