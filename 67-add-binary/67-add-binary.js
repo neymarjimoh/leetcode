@@ -4,27 +4,16 @@
  * @return {string}
  */
 var addBinary = function(a, b) {
-    let sum = BigInt(a)+BigInt(b);
-    let str = sum.toString();
-    // console.log(str);
-    index = str.indexOf('2');
-     // console.log(index);
-    while(index >= 0){
-        str = str.replace('2','0'); 
-        if(index === 0)
-            str = '1'+str;
-        else if(index ===1 && str[index-1]==='1' && str.length == 2){
-            str = '100'
-        }
-        else{
-            if(str[index-1]==='1')
-                str = str.slice(0,index-1) + '2' + str.slice(index,str.length);
-            
-            else
-                str = str.slice(0,index-1) + '1' + str.slice(index,str.length);       
-        }
-           
-        index = str.indexOf('2');
+    const alen = a.length-1;
+    const blen = b.length-1;
+    let pos = 0;
+    let ans = "";
+    let carry = 0;
+    while (pos <= alen || pos <= blen) {
+        let oneBits = (pos <= alen && a.charAt(alen-pos) === '1') + (pos <= blen && b.charAt(blen-pos) === '1') + carry;
+        ans = (oneBits % 2).toString() + ans;
+        carry = (oneBits >= 2)? 1: 0;
+        pos++;
     }
-    return str;
+    return (carry? carry.toString() : '') + ans;
 };
