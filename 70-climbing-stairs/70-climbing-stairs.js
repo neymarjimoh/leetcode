@@ -3,16 +3,10 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-    if (n < 4) {
-        return n
-    }
-    var firstSum = 2
-    var secondSum = 3
+    const memo = [1, 1, 2];
     
-    for (var i = 4; i < n; i++) {
-		// It is simply swapping two vars but choose this method for not using temp variable
-        secondSum = firstSum + secondSum
-        firstSum = secondSum - firstSum
+    for (let i = 3; i <= n; i++) {
+        memo[i] = memo[i - 1] + memo[i -2];
     }
-    return firstSum + secondSum
+    return memo[n];
 };
