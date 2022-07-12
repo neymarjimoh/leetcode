@@ -4,8 +4,7 @@
  */
 var containsDuplicate = function(nums) {
     const set = new Set(nums);
-    const ans = set.size == nums.length
-    return !ans;
+    return set.size !== nums.length;
     
     // Time: O(n)
     // Space: O(n)
