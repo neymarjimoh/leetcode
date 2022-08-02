@@ -22,4 +22,7 @@ var minSubArrayLen = function(target, nums) {
     }
     
     return result;
+    
+    // Time: T(N): O(N + N) => O(N)
+    // Space: T(N): O(1)
 };
