@@ -30,4 +30,20 @@ var maxProfit = function(prices) {
     }
     
     return max_profit;
+    
+    // ======MY OWN FROM HEAD
+    let profit = 0;
+    if (prices.length < 2) return profit;
+    let buy = prices[0];
+    let sell = 0;
+    for (let i = 1; i < prices.length; i++) {
+        const currPrice = prices[i];
+        if (buy > currPrice) {
+            buy = currPrice;
+        } else {
+            sell = currPrice;
+            profit = Math.max(profit, sell - buy);
+        }
+    }
+    return profit;
 };
