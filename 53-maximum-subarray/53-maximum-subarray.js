@@ -3,6 +3,17 @@
  * @return {number}
  */
 var maxSubArray = function(nums) {
+    
+     // Using Kadane's algorithm
+    let sum = 0;
+    let maxSum = -Infinity;
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        if (sum < nums[i]) sum = nums[i];
+        if (maxSum < sum) maxSum = sum;
+    }
+    return maxSum;
+    
     // method 1
     let currentSum = nums[0];
     let maxSum = nums[0];
