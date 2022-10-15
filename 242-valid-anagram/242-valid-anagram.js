@@ -45,4 +45,38 @@ var isAnagram = function(s, t) {
      } else {
          return true
      }
+     
+     
+     
+     
+     
+     // second way
+ const sLength = s.length;
+    const tLength = t.length;
+    if (sLength != tLength) return false;
+    const charMap = {};
+    for (let i = 0; i < sLength; i++) {
+        const currentChar = s[i];
+        if (currentChar in charMap) {
+            charMap[currentChar] += 1;
+        } else {
+            charMap[currentChar] = 1;
+        }
+    }
+    
+    for (let i = 0; i < tLength; i++) {
+        const currentChar = t[i];
+        if (currentChar in charMap) {
+            if (charMap[currentChar] < 1) {
+                return false
+            } else {
+                charMap[currentChar] -= 1;
+            }
+        } else {
+            return false;
+        }
+
+    }
+    
+    return true;
 };
