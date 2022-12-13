@@ -3,15 +3,14 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-    const obj = {};
-    for (let j = 0; j < nums.length; j++) {
-      const diff = target - nums[j];
-      if (diff in obj) {
-        return [j, obj[diff]];
-      } else {
-        obj[nums[j]] = j;
-      }
+function twoSum(nums: number[], target: number): number[] {
+    const map = {};
+    for (let i = 0; i < nums.length; i++) {
+        const currNum = nums[i];
+        const diff = target - currNum;
+        if (diff in map) {
+            return [map[diff], i];
+        }
+        map[currNum] = i;
     }
-};
-                                    
+};                                  
