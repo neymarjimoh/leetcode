@@ -24,8 +24,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
-  -100 <= nums[i] <= 100
-  
+
 <ul>
 	<li><code>2 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
 	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
