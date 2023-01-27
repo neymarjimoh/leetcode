@@ -5,12 +5,13 @@
 var maxSubArray = function(nums) {
     
      // Using Kadane's algorithm
-    let sum = 0;
-    let maxSum = -Infinity;
+    let maxSum = nums[0];
+    let currSum = 0;
     for (let i = 0; i < nums.length; i++) {
-        sum += nums[i];
-        if (sum < nums[i]) sum = nums[i];
-        if (maxSum < sum) maxSum = sum;
+        const currNum = nums[i];
+        currSum = Math.max(currSum, 0); // revert to 0 if previous currSum is -ve
+        currSum += currNum;
+        maxSum = Math.max(maxSum, currSum);
     }
     return maxSum;
     
