@@ -27,3 +27,27 @@ var numOfSubarrays = function(arr, k, threshold) {
     
     return counter;
 };
+
+// approach 2 with one loop:
+var numOfSubarrays = function (arr, k, threshold) {
+  const arrayLength = arr.length;
+  if (arrayLength < k) return 0;
+  let result = 0;
+  let sum = 0,
+    left = 0;
+
+  for (let right = 0; right < arrayLength; right++) {
+    const currElem = arr[right];
+    sum += currElem;
+    if (right - left + 1 >= k) {
+      const average = sum / k;
+      if (average >= threshold) {
+        result += 1;
+      }
+      sum -= arr[left];
+      left++;
+    }
+  }
+
+  return result;
+};
