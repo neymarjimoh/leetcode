@@ -17,11 +17,7 @@ var minSubArrayLen = function(target, nums) {
         }
     }
     
-    if (result == Infinity) {
-        result = 0;
-    }
-    
-    return result;
+    return result == Infinity ? 0 : result;
     
     // Time: T(N): O(N + N) => O(N)
     // Space: T(N): O(1)
